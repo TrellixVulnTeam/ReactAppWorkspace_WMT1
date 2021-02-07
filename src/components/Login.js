@@ -13,7 +13,6 @@ class Login extends React.Component {
       email: '',
       password: '',
       UserType: '',
-      // formErrors: { email: '', password: '' },
       emailErrorMsg:{ email: ''},
       passwordErrorMsg:{ password: ''},
       emailValid: false,
@@ -97,7 +96,7 @@ class Login extends React.Component {
       this.setState({user:this.state.email.substring(0,this.state.email.indexOf('@'))}, () => {
       setUserSession(this.state.email, this.state.user, this.state.UserType);
       alert("Login Successful..");
-      this.props.history.push('/dashboardF');
+      this.props.history.push('/LMS/dashboardF');
     }    );
 
     
@@ -139,7 +138,7 @@ class Login extends React.Component {
             </div>
             <div className="register-menu">
             
-              <a href='/registration'>New User? Click Here To Register!</a>
+              <a href='/LMS/registration'>New User? Click Here To Register!</a>
           
           </div>
             <input type='submit' value='Login' disabled={!this.state.loginButtonEnable} />

@@ -16,6 +16,16 @@
     grid-row:  1; 
     padding-left: 30px;
 }
+.ViewTitle{
+    grid-column: 2/span 3 ;                           
+    grid-row:  1; 
+    width: auto;
+}
+.ViewTitle>h1{
+    font-size: 40px;
+    width: auto;
+    text-decoration-line: overline;
+}
 .course{
     grid-column: 1/4;                           
     grid-row:  2; 
@@ -25,17 +35,17 @@
 
 }
 .createmodule{
-    grid-column: 1/4;                           
+    grid-column: 2/4;                           
     grid-row:  2; 
     float: right;
     width: 100vw;
     height: 100vh;   
 }
 .createmodule>fieldset{
-    width: 40vw;
+    width: auto;
     height: 65vh;
-    align-items: left;
-    float: left;
+    align-content: right;
+    position: fixed;
 }
 .createmodule>fieldset>form>div>div>input{
     width: 30vw;
@@ -51,14 +61,14 @@
 }
 .coursedropdown{
 width: 30vw;
-height: 5h;
+box-sizing: border-box;
 margin-left: 20px;
 margin-bottom: 10px;
 }
 .back{
-    grid-column: 2/4;                           
+    grid-column: 3;                           
     grid-row: 1 ; 
-    width: 100vw;
+    width: auto;
     align-items: center;
 }
 .course>h2{
@@ -77,7 +87,7 @@ margin-bottom: 10px;
     margin-top: 0.5px;
 }
 .user-menu{
-    grid-column: 4 ;                           
+    grid-column: 4;                           
     grid-row:  1; 
     text-align: right;
 }

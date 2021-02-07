@@ -45,12 +45,12 @@ class CreateModule extends React.Component {
   }
 
   handleSubmit = (e) => {
-      alert("Module created successfull.");
+      alert("Module created successfully!");
   }
  
 
   handleGoBack = (e) => {
-    this.props.history.push('/dashboardF');
+    this.props.history.push('/LMS/dashboardF');
     e.preventDefault();
   }
 
@@ -88,7 +88,6 @@ class CreateModule extends React.Component {
             <div>
             <div>
             <select
-            placeholder="Select Course"
             className = "coursedropdown"
               onChange={this.handleUserInput}
               required

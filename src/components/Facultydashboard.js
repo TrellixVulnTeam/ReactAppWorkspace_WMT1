@@ -1,6 +1,6 @@
 import React from 'react';
 import { getUser, removeUserSession } from './Common';
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import FacultyTable from "./Table";
 import './dashboard.css';
 
@@ -14,31 +14,36 @@ class Facultydashboard extends React.Component {
           Course_ID: "WEB01",
           Course_Name: "Web Development",
           End_Date: "2021-04-30",
-          Add_Module:'Add',
-          Students_Enrolled:"View Details"
+          Add_Module:"+",
+          Students_Enrolled:"View Details",
+          Students_Registered:"View Details",
+          Add_Evaluation:"+",
 
         },
         {
           Course_ID: "PYT01",
           Course_Name: "Python",
           End_Date: "2021-06-30",
-          Add_Module:'Add',
-          Students_Enrolled:"View Details"
-
+          Add_Module:"+",
+          Students_Enrolled:"View Details",
+          Students_Registered:"View Details",
+          Add_Evaluation:"+"
         },
         {
           Course_ID: "RCT01",
           Course_Name: "React JS",
           End_Date: "2021-02-30",
-          Add_Module:'Add',
-          Students_Enrolled:"View Details"
-
+          Add_Module:"+",
+          Students_Enrolled:"View Details",
+          Students_Registered:"View Details",
+          Add_Evaluation:"+"
         }
       ]
     }
     this.handleLogout = this.handleLogout.bind(this);
   }
 
+  
   handleLogout = (e) => {
     removeUserSession();
     this.props.history.push('/');
@@ -46,11 +51,8 @@ class Facultydashboard extends React.Component {
   }
 
   render() {
-    const user = getUser();
-    if(user.name.length===0){
-      alert("Session Lost. Redirecting to login page!");
-      this.handleLogout();
-    } 
+    let user;
+    user = getUser(); 
     let bodycontent;
     if(user.role!=="faculty"){
       bodycontent = <label>No Course</label>
@@ -62,6 +64,9 @@ class Facultydashboard extends React.Component {
         <div className="Greeting">
           <h3>Welcome {user.name}</h3>
         </div>
+        <div className="ViewTitle">
+          <h1>Faculty User Dashboard</h1>
+        </div>
         <div className="course">  
         <h2>List of assigned Courses:</h2>                
           {bodycontent}
@@ -72,8 +77,7 @@ class Facultydashboard extends React.Component {
         </div>
       </div>
     );
-     
+    
   }
 }
-
 export default withRouter(Facultydashboard);

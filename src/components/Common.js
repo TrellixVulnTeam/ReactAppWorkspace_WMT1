@@ -24,13 +24,13 @@ export const getUser = () => {
 
   }
 
-  export const setCourseSession = (id, name, modules) => {
+  export const setCourseModulesSession = (id, name, modules) => {
     sessionStorage.setItem('id', id);
     sessionStorage.setItem('name', name);
     sessionStorage.setItem('modules', modules);
 
   }
-  export const getCourse = () => {
+  export const getCourseModules = () => {
     const course= [];
      course.id = sessionStorage.getItem('id');
      course.name = sessionStorage.getItem('name');

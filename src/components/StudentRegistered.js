@@ -4,41 +4,40 @@ import { withRouter } from "react-router-dom";
 import FacultyTable from "./Table";
 import './dashboard.css';
 
-class FacultydashboardCopy extends React.Component {
+class StudentRegistered extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       tableData: [
         {
-          Course_ID: "WEB01",
-          Course_Name: "Web Development",
-          End_Date: "2021-04-30",
-          Add_Module:'Add',
-          Students_Enrolled:"View Details"
+          Register_ID:'LMS10202',
+          Student_Name:'Praveen',
+          Student_EmailID:'Praveen@gmail.com',
+          Student_PhoneNo:'7890922877'
 
         },
         {
-          Course_ID: "PYT01",
-          Course_Name: "Python",
-          End_Date: "2021-06-30",
-          Add_Module:'Add',
-          Students_Enrolled:"View Details"
-
+          Register_ID:'LMS10205',
+          Student_Name:'Naveen',
+          Student_EmailID:'Naveen@gmail.com',
+          Student_PhoneNo:'9655526272'
         },
-        {
-          Course_ID: "RCT01",
-          Course_Name: "React JS",
-          End_Date: "2021-02-30",
-          Add_Module:'Add',
-          Students_Enrolled:"View Details"
-
-        }
-      ]
+        
+      ],
     }
     this.handleLogout = this.handleLogout.bind(this);
+    
   }
 
+ 
+
+  handleGoBack = (e) => {
+    this.props.history.push('/LMS/dashboardF');
+    e.preventDefault();
+  }
+
+  
   handleLogout = (e) => {
     removeUserSession();
     this.props.history.push('/');
@@ -63,10 +62,12 @@ class FacultydashboardCopy extends React.Component {
           <h3>Welcome {user.name}</h3>
         </div>
         <div className="course">  
-        <h2>List of assigned Courses:</h2>                
+        <h2>Registered Students:</h2>                
           {bodycontent}
         </div>
-
+        <div className="back">
+        <input type="submit" onClick={this.handleGoBack} value="GoBack"/>
+        </div>
         <div className='user-menu'>
         <input type="submit" onClick={this.handleLogout} value="Signout"/>
         </div>
@@ -76,4 +77,4 @@ class FacultydashboardCopy extends React.Component {
   }
 }
 
-export default withRouter(FacultydashboardCopy);
+export default withRouter(StudentRegistered);

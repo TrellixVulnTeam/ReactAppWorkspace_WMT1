@@ -46,10 +46,8 @@ export default class CourseTable extends React.Component {
 
     })
     return (
-      <div className="courselist">
-          <div className="courselist">
-          {/* <input type="text" placeholder="Filter on JobStatus" onChange={(e) => this.searchSpace(e)} />
-          <input type="text" placeholder="Filter on PaymentSatus" onChange={(e) => this.searchSpace1(e)} /> */}
+      <div className="table">
+          <div className="table">
           <table>
             <thead>
               <tr>{this.getHeader()}</tr>             
@@ -68,20 +66,26 @@ export default class CourseTable extends React.Component {
   }
 }
 
-const RenderRow = (props) => {
-  let addModuleURL="./CreateModule";
-  let studentDetailsURL="./StudentDetails";
-  return props.keys.map((key, index) => {
- if (key==="Add_Module") {
-      return <td key={props.data[key]}><a href={addModuleURL}>{props.data[key]}</a></td>
+function RenderRow(props) {
+  let createModuleURL = "/LMS/dashboardF/CreateModule";
+  let studentEnrolledURL = "/LMS/dashboardF/StudentEnrolled";
+  let studentRegisteredURL = "/LMS/dashboardF/StudentRegistered";
+  let addEvaluationURL = "/LMS/dashboardF/AddEvaluation";
 
-    }else if(key==="Students_Enrolled")
-    {
-        return <td key={props.data[key]}><a href={studentDetailsURL}>{props.data[key]}</a></td>
+  return props.keys.map((key, index) => {
+    if (key === "Add_Module") {
+      return <td key={props.data[key]}><a href={createModuleURL}>{props.data[key]}</a></td>;
+
+    } else if (key === "Students_Enrolled") {
+      return <td key={props.data[key]}><a href={studentEnrolledURL}>{props.data[key]}</a></td>;
+    } else if (key === "Students_Registered") {
+      return <td key={props.data[key]}><a href={studentRegisteredURL}>{props.data[key]}</a></td>;
+    }else if (key === "Add_Evaluation") {
+      return <td key={props.data[key]}><a href={addEvaluationURL}>{props.data[key]}</a></td>;
     }
     else
-    return <td key={props.data[key]}>{props.data[key]}</td>
-  })
+      return <td key={props.data[key]}>{props.data[key]}</td>;
+  });
 }
 
 

@@ -44,7 +44,7 @@ class StudentDetails extends React.Component {
  
 
   handleGoBack = (e) => {
-    this.props.history.push('/dashboardF');
+    this.props.history.push('/LMS/dashboardF');
     e.preventDefault();
   }
 
