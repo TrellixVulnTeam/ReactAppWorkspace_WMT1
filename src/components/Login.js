@@ -93,12 +93,17 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     console.log("Login Succesful");
-      this.setState({user:this.state.email.substring(0,this.state.email.indexOf('@'))}, () => {
+    var username = this.state.email.substring(0,this.state.email.indexOf('@'));
+    if (username === "karthikeyan") {
+      this.setState({user:username}, () => {
       setUserSession(this.state.email, this.state.user, this.state.UserType);
       alert("Login Successful..");
       this.props.history.push('/LMS/dashboardF');
     }    );
-
+  } else {
+    alert("Invalid username and password!");
+    e.preventDefault();
+  }
     
   }
 

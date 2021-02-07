@@ -133,10 +133,10 @@ class CreateModule extends React.Component {
           </fieldset>
         </div>
         <div className="back">
-        <input type="submit" onClick={this.handleGoBack} value="GoBack"/>
+        <input type="submit" onClick={this.handleGoBack} value="Go Back"/>
         </div>
         <div className='user-menu'>
-        <input type="submit" onClick={this.handleLogout} value="Signout"/>
+        <input type="submit" onClick={this.handleLogout} value="Sign out"/>
         </div>
       </div>
     );

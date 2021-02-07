@@ -73,7 +73,7 @@ class Facultydashboard extends React.Component {
         </div>
 
         <div className='user-menu'>
-        <input type="submit" onClick={this.handleLogout} value="Signout"/>
+        <input type="submit" onClick={this.handleLogout} value="Sign out"/>
         </div>
       </div>
     );
