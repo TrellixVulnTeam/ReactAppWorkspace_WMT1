@@ -3,6 +3,7 @@ import { getUser, removeUserSession } from './Common';
 import { Redirect, withRouter } from "react-router-dom";
 import FacultyTable from "./Table";
 import './dashboard.css';
+import axios from 'axios';
 
 class Facultydashboard extends React.Component {
   constructor(props) {
@@ -50,11 +51,33 @@ class Facultydashboard extends React.Component {
     e.preventDefault();
   }
 
+  fetchCourseAssignedDetails (email) {
+    var apiBaseUrl = "http://localhost:8080/facultyDetails";
+    var self = this;
+    var payload = {
+      "id": this.state.email,
+      "password": this.state.password,
+      "role": this.state.UserType
+    }
+    let jsonTableData;
+    axios.get(apiBaseUrl, payload)
+      .then(function (response) {
+       
+        if (response.status === 200) {
+            console.log("Faculty Details fetched:"+response.data.AssignedCourseDetails);
+            self.setState({tableData:response.data.AssignedCourseDetails});
+        }
+      }).catch(function (error) {
+        console.log("Something went wrong!");
+        alert("Something went wrong!");
+      }); 
+  }
   render() {
     let user;
-    user = getUser(); 
+    user = getUser();
+     
     let bodycontent;
-    if(user.role!=="faculty"){
+    if(user.name!=="karthikeyan"){
       bodycontent = <label>No Course</label>
     } else {
       bodycontent = <FacultyTable data={this.state.tableData} />

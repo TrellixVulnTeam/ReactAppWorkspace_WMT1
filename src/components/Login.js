@@ -117,27 +117,11 @@ class Login extends React.Component {
       });
 
         }
-      })
-      .catch(function (error) {
+      }).catch(function (error) {
         console.log("Invalid Username and Password!");
         alert("Invalid Username and Password!");
       });
-       e.preventDefault();
-
-
-  //   console.log("Login Succesful");
-  //   var username = this.state.email.substring(0,this.state.email.indexOf('@'));
-  //   if (username === "karthikeyan") {
-  //     this.setState({user:username}, () => {
-  //     setUserSession(this.state.email, this.state.user, this.state.UserType);
-  //     alert("Login Successful..");
-  //     this.props.history.push('/LMS/dashboardF');
-  //   }    );
-  // } else {
-  //   alert("Invalid username and password!");
-  //   e.preventDefault();
-  // }
-    
+       e.preventDefault();    
   }
 
   render() {

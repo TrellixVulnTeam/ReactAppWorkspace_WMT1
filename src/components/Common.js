@@ -37,3 +37,4 @@ export const getUser = () => {
      course.modules = sessionStorage.getItem('modules');
     return course;
    }
+   
