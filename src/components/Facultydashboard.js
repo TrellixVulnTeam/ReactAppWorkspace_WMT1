@@ -65,7 +65,7 @@ class Facultydashboard extends React.Component {
           <h3>Welcome {user.name}</h3>
         </div>
         <div className="ViewTitle">
-          <h1>Faculty User Dashboard</h1>
+          <h1>FACULTY USER DASHBOARD</h1>
         </div>
         <div className="course">  
         <h2>List of assigned Courses:</h2>                

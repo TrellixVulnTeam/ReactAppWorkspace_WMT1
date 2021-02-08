@@ -92,18 +92,51 @@ class Login extends React.Component {
   }
 
   handleSubmit = (e) => {
-    console.log("Login Succesful");
+
+    var apiBaseUrl = "http://localhost:8080/authentication/"+this.state.email;
+    var self = this;
+    var payload = {
+      "id": this.state.email,
+      "password": this.state.password,
+      "role": this.state.UserType
+    }
     var username = this.state.email.substring(0,this.state.email.indexOf('@'));
-    if (username === "karthikeyan") {
-      this.setState({user:username}, () => {
-      setUserSession(this.state.email, this.state.user, this.state.UserType);
-      alert("Login Successful..");
-      this.props.history.push('/LMS/dashboardF');
-    }    );
-  } else {
-    alert("Invalid username and password!");
-    e.preventDefault();
-  }
+
+    axios.get(apiBaseUrl, payload)
+      .then(function (response) {
+       
+        if (response.status === 200) {
+          self.setState({user:username}, () => {
+            setUserSession(self.state.email, username, self.state.UserType);
+            alert("Login Successful!");
+            if (self.state.UserType ==='faculty') {
+            self.props.history.push('/LMS/dashboardF');
+        } else {
+          alert("Student Dashboard not available!");
+        }
+      });
+
+        }
+      })
+      .catch(function (error) {
+        console.log("Invalid Username and Password!");
+        alert("Invalid Username and Password!");
+      });
+       e.preventDefault();
+
+
+  //   console.log("Login Succesful");
+  //   var username = this.state.email.substring(0,this.state.email.indexOf('@'));
+  //   if (username === "karthikeyan") {
+  //     this.setState({user:username}, () => {
+  //     setUserSession(this.state.email, this.state.user, this.state.UserType);
+  //     alert("Login Successful..");
+  //     this.props.history.push('/LMS/dashboardF');
+  //   }    );
+  // } else {
+  //   alert("Invalid username and password!");
+  //   e.preventDefault();
+  // }
     
   }
 

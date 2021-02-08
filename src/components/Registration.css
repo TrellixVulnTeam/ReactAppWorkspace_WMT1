@@ -1,6 +1,6 @@
 .registrationContainer{
     background-repeat: no-repeat;
-    background-size: inherit;
+    background-size: cover;
     background-image: url("../LMSBanner_Main.jpg");
     height: 100vh;
     width: 100vw;

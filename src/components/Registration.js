@@ -135,9 +135,28 @@ class Registration extends React.Component {
 
 
   handleSubmit = (e) => {
+    
     if (this.state.passwordValid) {
-      alert("Registration successfull. Redirecting to login page!");
-      this.props.history.push('/');
+      var apiBaseUrl = "http://localhost:8080/authentication/";
+      var self = this;
+      var payload = {
+        "id": this.state.Email,
+        "password": this.state.Password,
+        "role": this.state.role
+      } 
+      axios.post(apiBaseUrl, payload)
+        .then(function (response) {
+         
+          if (response.status === 201) {  
+              alert("Registration successfull. Redirecting to login page!");
+              self.props.history.push('/');         
+          }
+        })
+        .catch(function (error) {
+          console.log("User already Registered!");
+          alert("User already Registered!");
+        });
+         e.preventDefault();
     } else {
       alert(this.state.passwordErrorMsg);
       e.preventDefault();

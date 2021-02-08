@@ -1,0 +1,160 @@
+{
+  "authentication": [
+    {
+      "id": "karthikeyan@gmail.com",
+      "password": "kar1990",
+      "role": "faculty"
+    },
+    {
+      "id": "shankarkumar@gmail.com",
+      "password": "shhhhsaa",
+      "role": "faculty"
+    },
+    {
+      "id": "Sakthi@gmail.com",
+      "password": "saki20",
+      "role": "faculty"
+    },
+    {
+      "id": "Neha@gmail.com",
+      "password": "neh1990",
+      "role": "faculty"
+    },
+    {
+      "id": "Neharika@gmail.com",
+      "password": "3322222",
+      "role": "faculty"
+    }
+  ],
+  "facultyDetails": [
+    {
+      "id": "karthikeyan@gmail.com",
+      "AssignedCourseDetails": [
+        {
+          "Course_ID": "JA01",
+          "Course_Name": "JAVA",
+          "End_Date": "2021-04-30",
+          "Modules": [],
+          "Students_Enrolled": [
+            {
+              "Student_ID": "202001",
+              "Student_Name": "Karthik",
+              "Student_EmailID": "Karhtik@gmail.com",
+              "Student_PhoneNo": "9762567373"
+            },
+            {
+              "Student_ID": "202002",
+              "Student_Name": "Shankar",
+              "Student_EmailID": "Shankar@gmail.com",
+              "Student_PhoneNo": "8939737733"
+            },
+            {
+              "Student_ID": "202003",
+              "Student_Name": "Bharat",
+              "Student_EmailID": "Bharat@gmail.com",
+              "Student_PhoneNo": "9891872773"
+            },
+            {
+              "Student_ID": "202004",
+              "Student_Name": "Raj",
+              "Student_EmailID": "Raj@gmail.com",
+              "Student_PhoneNo": "9787873287"
+            }
+          ],
+          "Students_Registered": [
+            {
+              "Student_ID": "202001",
+              "Student_Name": "Karthik",
+              "Student_EmailID": "Karhtik@gmail.com",
+              "Student_PhoneNo": "9762567373"
+            },
+            {
+              "Student_ID": "202002",
+              "Student_Name": "Shankar",
+              "Student_EmailID": "Shankar@gmail.com",
+              "Student_PhoneNo": "8939737733"
+            },
+            {
+              "Student_ID": "202003",
+              "Student_Name": "Bharat",
+              "Student_EmailID": "Bharat@gmail.com",
+              "Student_PhoneNo": "9891872773"
+            },
+            {
+              "Student_ID": "202004",
+              "Student_Name": "Raj",
+              "Student_EmailID": "Raj@gmail.com",
+              "Student_PhoneNo": "9787873287"
+            }
+          ]
+        },
+        {
+          "Course_ID": "PYT01",
+          "Course_Name": "Python",
+          "End_Date": "2021-06-30",
+          "Modules": [],
+          "Students_Enrolled": [
+            {
+              "Student_ID": "202001",
+              "Student_Name": "Karthik",
+              "Student_EmailID": "Karhtik@gmail.com",
+              "Student_PhoneNo": "9762567373"
+            },
+            {
+              "Student_ID": "202002",
+              "Student_Name": "Shankar",
+              "Student_EmailID": "Shankar@gmail.com",
+              "Student_PhoneNo": "8939737733"
+            },
+            {
+              "Student_ID": "202003",
+              "Student_Name": "Bharat",
+              "Student_EmailID": "Bharat@gmail.com",
+              "Student_PhoneNo": "9891872773"
+            },
+            {
+              "Student_ID": "202004",
+              "Student_Name": "Raj",
+              "Student_EmailID": "Raj@gmail.com",
+              "Student_PhoneNo": "9787873287"
+            }
+          ],
+          "Students_Registered": [
+            {
+              "Student_ID": "202001",
+              "Student_Name": "Karthik",
+              "Student_EmailID": "Karhtik@gmail.com",
+              "Student_PhoneNo": "9762567373"
+            },
+            {
+              "Student_ID": "202002",
+              "Student_Name": "Shankar",
+              "Student_EmailID": "Shankar@gmail.com",
+              "Student_PhoneNo": "8939737733"
+            },
+            {
+              "Student_ID": "202003",
+              "Student_Name": "Bharat",
+              "Student_EmailID": "Bharat@gmail.com",
+              "Student_PhoneNo": "9891872773"
+            },
+            {
+              "Student_ID": "202004",
+              "Student_Name": "Raj",
+              "Student_EmailID": "Raj@gmail.com",
+              "Student_PhoneNo": "9787873287"
+            }
+          ]
+        },
+        {
+          "Course_ID": "RCT01",
+          "Course_Name": "React JS",
+          "End_Date": "2021-02-30",
+          "Modules": [],
+          "Students_Enrolled": [],
+          "Students_Registered": []
+        }
+      ]
+    }
+  ]
+}
