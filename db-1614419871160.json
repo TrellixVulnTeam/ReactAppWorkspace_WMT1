@@ -1,0 +1,58 @@
+{
+  "authentication": [
+    {
+      "id": "karthikeyan@gmail.com",
+      "password": "kar1990",
+      "role": "faculty"
+    },
+    {
+      "id": "shankarkumar@gmail.com",
+      "password": "shhhhsaa",
+      "role": "faculty"
+    },
+    {
+      "id": "Sakthi@gmail.com",
+      "password": "saki20",
+      "role": "faculty"
+    },
+    {
+      "id": "Neha@gmail.com",
+      "password": "neh1990",
+      "role": "faculty"
+    },
+    {
+      "id": "Neharika@gmail.com",
+      "password": "3322222",
+      "role": "faculty"
+    }
+  ],
+  "facultyDetails": [
+    {
+      "Course_ID": "WEB01",
+      "Course_Name": "Web Development",
+      "End_Date": "2021-04-30",
+      "Add_Module": [],
+      "Students_Enrolled": [],
+      "Students_Registered": [],
+      "Add_Evaluation": []
+    },
+    {
+      "Course_ID": "PYT01",
+      "Course_Name": "Python",
+      "End_Date": "2021-06-30",
+      "Add_Module": [],
+      "Students_Enrolled": [],
+      "Students_Registered": [],
+      "Add_Evaluation": []
+    },
+    {
+      "Course_ID": "RCT01",
+      "Course_Name": "React JS",
+      "End_Date": "2021-02-30",
+      "Add_Module": [],
+      "Students_Enrolled": [],
+      "Students_Registered": [],
+      "Add_Evaluation": []
+    }
+  ]
+}

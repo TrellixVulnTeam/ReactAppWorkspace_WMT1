@@ -37,4 +37,11 @@ export const getUser = () => {
      course.modules = sessionStorage.getItem('modules');
     return course;
    }
+
+  export const getEndPointAuthentication = () => {
+    const endpointAuth= [];
+    endpointAuth.username = "Karthikeyan";
+    endpointAuth.password = "karthi24";
+    return endpointAuth;
+   }
    

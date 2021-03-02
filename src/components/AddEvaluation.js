@@ -50,11 +50,6 @@ class AddEvaluation extends React.Component {
       this.handleLogout();
     } 
     
-    let bodycontent;
-    if(user.role!=="faculty"){
-      bodycontent = <label>No Course</label>
-    } else {
-    }
     return (
       <div className="dashboard-container">
         <div className="Greeting">

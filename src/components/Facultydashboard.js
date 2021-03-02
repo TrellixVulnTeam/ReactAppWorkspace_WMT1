@@ -59,7 +59,6 @@ class Facultydashboard extends React.Component {
       "password": this.state.password,
       "role": this.state.UserType
     }
-    let jsonTableData;
     axios.get(apiBaseUrl, payload)
       .then(function (response) {
        
