@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
     "axios": "^0.21.1",
+    "axios-debug-log": "^0.8.2",
     "install": "^0.13.0",
     "npm": "^7.5.2",
     "react": "^17.0.1",
@@ -41,6 +42,4 @@
       "last 1 safari version"
     ]
   }
-
-  
 }

@@ -93,36 +93,43 @@ class Login extends React.Component {
 
   
   handleSubmit = (e) => {
-
-    var apiBaseUrl = "http://localhost:8080/authentication/"+this.state.email;
+    var username = this.state.email.substring(0,this.state.email.indexOf('@'));
+    if (this.state.UserType ==='faculty') {
+    var apiBaseUrl = "http://localhost:8000/api/checkUserValid";
     var self = this;
     var payload = {
-      "id": this.state.email,
+      "email": this.state.email,
       "password": this.state.password,
-      "role": this.state.UserType
-    }
-    var username = this.state.email.substring(0,this.state.email.indexOf('@'));
-
-    axios.get(apiBaseUrl, payload)
+      "usertype": this.state.UserType
+    } 
+    axios
+    .get(apiBaseUrl, payload,
+      {auth: {
+        username: 'admin',
+        password: '123'
+      }})
       .then(function (response) {
-       
+       console.log(JSON.stringify(response))
+       console.log((JSON.stringify(response)).length === 0)
         if (response.status === 200) {
           self.setState({user:username}, () => {
             setUserSession(self.state.email, username, self.state.UserType);
             alert("Login Successful!");
-            if (self.state.UserType ==='faculty') {
             self.props.history.push('/LMS/dashboardF');
-        } else {
-          alert("Student Dashboard not available!");
-        }
       });
 
-        }
-      }).catch(function (error) {
+        } else {
         console.log("Invalid Username and Password!");
         alert("Invalid Username and Password!");
+        }
+      }).catch(function (error) {
+        console.log("Something went wrong while login!");
+        alert("Something went wrong while login!");
       });
        e.preventDefault();    
+      } else {
+        alert("Student Dashboard not available!");
+      }
   }
 
   render() {

@@ -137,14 +137,20 @@ class Registration extends React.Component {
   handleSubmit = (e) => {
     
     if (this.state.passwordValid) {
-      var apiBaseUrl = "http://localhost:8080/authentication/";
+      var apiBaseUrl = "http://localhost:8000/api/appUsers/";
       var self = this;
       var payload = {
-        "id": this.state.Email,
+        "email": this.state.Email,
         "password": this.state.Password,
-        "role": this.state.role
+        "usertype": this.state.role,
+        "fullname": this.state.FullName,
+        "DOB":this.state.dob
       } 
-      axios.post(apiBaseUrl, payload)
+      axios.post(apiBaseUrl, payload,
+        {auth: {
+          username: 'admin',
+          password: '123'
+        }})
         .then(function (response) {
          
           if (response.status === 201) {  
@@ -153,8 +159,8 @@ class Registration extends React.Component {
           }
         })
         .catch(function (error) {
-          console.log("User already Registered!");
-          alert("User already Registered!");
+          console.log("Something went wrong.! Please try again!");
+          alert("User already Registered with this Email-id!");
         });
          e.preventDefault();
     } else {

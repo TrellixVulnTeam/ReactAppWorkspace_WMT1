@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fbdbac1c.chunk.css",
+    "main.js": "/static/js/main.012cc1ed.chunk.js",
+    "main.js.map": "/static/js/main.012cc1ed.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.362c58cd.js",
+    "runtime-main.js.map": "/static/js/runtime-main.362c58cd.js.map",
+    "static/js/2.f3577103.chunk.js": "/static/js/2.f3577103.chunk.js",
+    "static/js/2.f3577103.chunk.js.map": "/static/js/2.f3577103.chunk.js.map",
+    "static/js/3.85d9d50c.chunk.js": "/static/js/3.85d9d50c.chunk.js",
+    "static/js/3.85d9d50c.chunk.js.map": "/static/js/3.85d9d50c.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.fbdbac1c.chunk.css.map": "/static/css/main.fbdbac1c.chunk.css.map",
+    "static/js/2.f3577103.chunk.js.LICENSE.txt": "/static/js/2.f3577103.chunk.js.LICENSE.txt",
+    "static/media/Registration.css": "/static/media/LMSBanner_Main.b4b35f66.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.362c58cd.js",
+    "static/js/2.f3577103.chunk.js",
+    "static/css/main.fbdbac1c.chunk.css",
+    "static/js/main.012cc1ed.chunk.js"
+  ]
+}
