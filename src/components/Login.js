@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { setUserSession } from './Common';
 import './Login.css';
 import { FormErrors } from './FormErrors';
@@ -92,44 +92,109 @@ class Login extends React.Component {
   }
 
   
-  handleSubmit = (e) => {
-    var username = this.state.email.substring(0,this.state.email.indexOf('@'));
-    if (this.state.UserType ==='faculty') {
-    var apiBaseUrl = "http://localhost:8000/api/checkUserValid";
-    var self = this;
-    var payload = {
-      "email": this.state.email,
-      "password": this.state.password,
-      "usertype": this.state.UserType
-    } 
-    axios
-    .get(apiBaseUrl, payload,
-      {auth: {
-        username: 'admin',
-        password: '123'
-      }})
-      .then(function (response) {
-       console.log(JSON.stringify(response))
-       console.log((JSON.stringify(response)).length === 0)
-        if (response.status === 200) {
-          self.setState({user:username}, () => {
-            setUserSession(self.state.email, username, self.state.UserType);
-            alert("Login Successful!");
-            self.props.history.push('/LMS/dashboardF');
-      });
+handleSubmit = (e) => {
+var self = this;
+var username = this.state.email.substring(0,this.state.email.indexOf('@'));
+var apiLink='http://127.0.0.1:8000/api/checkUserValid';
+const fetchData = async () => {
+  const res = await axios.get(`${apiLink}`, { headers: { Accept: "application/json" } });
+  console.log(res.data);
+  console.log(res.data.joke)
+}
+// var data = JSON.stringify({"email":this.state.email,"password":this.state.password,"usertype":this.state.UserType});
+// var config = {
+//   method: 'get',
+//   url: 'http://127.0.0.1:8000/api/checkUserValid',
+//   headers: { 
+//     'Authorization': 'Basic YWRtaW46MTIz', 
+//     'Content-Type': 'application/json'
+//   },
+//   data : data
+// };
+// if (self.state.UserType ==='faculty') {
+//   var myHeaders = new Headers();
+//   myHeaders.append("Authorization", "Basic YWRtaW46MTIz");
+//   myHeaders.append("Content-Type", "application/json");
+  
+//   var raw = JSON.stringify({"email":"karthikeyan@gmail.com","password":"karthi24","usertype":"faculty"});
+  
+//   var requestOptions = {
+//     method: 'GET',
+//     headers: myHeaders,
+//     body: raw,
+//     redirect: 'follow'
+//   };
+  
+//   fetch("http://127.0.0.1:8000/api/checkUserValid", requestOptions)
+//     .then(response => response.text())
+//     .then(result => {
+//       console.log(result);
+//       if (result.status === 200) {
+//     self.setState({user:username}, () => {
+      
+//       setUserSession(self.state.email, username, self.state.UserType);
+//       alert("Login Successful!");
+      
+//       self.props.history.push('/LMS/dashboardF');
+//     })
+//   }
+//   })
+//     .catch(error => console.log('error', error));
+// axios(config).then(function (response) {
+//   console.log(JSON.stringify(response.data));
+//   if (response.status === 200) {
+//     self.setState({user:username}, () => {
+      
+//       setUserSession(self.state.email, username, self.state.UserType);
+//       alert("Login Successful!");
+      
+//       self.props.history.push('/LMS/dashboardF');
+  
+// });
 
-        } else {
-        console.log("Invalid Username and Password!");
-        alert("Invalid Username and Password!");
-        }
-      }).catch(function (error) {
-        console.log("Something went wrong while login!");
-        alert("Something went wrong while login!");
-      });
-       e.preventDefault();    
-      } else {
-        alert("Student Dashboard not available!");
-      }
+//   }
+// })
+// .catch(function (error) {
+//   console.log(error);
+//   console.log("Invalid Username and Password!");
+//   alert("Invalid Username and Password!");
+// });
+// } else {
+//   alert("Student Dashboard not available!");
+// }
+
+    // var apiBaseUrl = "http://127.0.0.1:8000/api/appUsers/";
+    // var self = this;
+    // var payload = {
+    //   "email": this.state.email,
+    //   "password": this.state.password,
+    //   "usertype": this.state.UserType
+    // }
+    // var username = this.state.email.substring(0,this.state.email.indexOf('@'));
+
+    // axios.get(apiBaseUrl,payload,
+    //   {auth: {
+    //     username: 'admin',
+    //     password: '123'
+    //   }})
+    //   .then(function (response) {
+       
+    //     if (response.status === 200) {
+    //       self.setState({user:username}, () => {
+    //         setUserSession(self.state.email, username, self.state.UserType);
+    //         alert("Login Successful!");
+    //         if (self.state.UserType ==='faculty') {
+    //         self.props.history.push('/LMS/dashboardF');
+    //     } else {
+    //       alert("Student Dashboard not available!");
+    //     }
+    //   });
+
+    //     }
+    //   }).catch(function (error) {
+        
+    //   });
+    //    e.preventDefault();    
   }
 
   render() {

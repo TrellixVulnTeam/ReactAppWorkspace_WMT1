@@ -160,7 +160,7 @@ class Registration extends React.Component {
         })
         .catch(function (error) {
           console.log("Something went wrong.! Please try again!");
-          alert("User already Registered with this Email-id!");
+          alert("Something went wrong.! Please try again!");
         });
          e.preventDefault();
     } else {
