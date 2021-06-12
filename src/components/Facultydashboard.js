@@ -1,6 +1,6 @@
 import React from 'react';
 import { getUser, removeUserSession } from './Common';
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import FacultyTable from "./Table";
 import './dashboard.css';
 import axios from 'axios';
