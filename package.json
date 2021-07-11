@@ -1,5 +1,5 @@
 {
-  "name": "ready_assist_frontend",
+  "name": "reactjs_lms_frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,6 +10,7 @@
     "axios-debug-log": "^0.8.2",
     "install": "^0.13.0",
     "npm": "^7.5.2",
+    "npm-install-all": "^1.1.21",
     "react": "^17.0.1",
     "react-app-polyfill": "^2.0.0",
     "react-axios": "^2.0.4",
