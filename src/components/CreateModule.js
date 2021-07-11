@@ -2,6 +2,8 @@ import React from 'react';
 import { getUser, removeUserSession } from './Common';
 import { withRouter } from "react-router-dom";
 import './dashboard.css';
+import axios from 'axios';
+
 
 class CreateModule extends React.Component {
   constructor(props) {
@@ -45,9 +47,28 @@ class CreateModule extends React.Component {
   }
 
   handleSubmit = (e) => {
-      alert("Module created successfully!");
+    var details="Course:"+this.state.Course_Name+" Module:"+this.state.module+" Description: "+this.state.description+" Topics: "+this.state.topics;
+    console.log(details);
+    this.sendMail(details);
+    alert("Module created successfully!");
   }
  
+  sendMail(details) {
+    var msgApiURI = "http://localhost:8080/emailNotify";
+      var data = {
+        "to": sessionStorage.getItem('email'),
+        "subject": "LMS Notification!",
+        "body": "Evalution added for the enrolled course! "+details
+      }
+      axios.post(msgApiURI, data,
+        {}).then(function (response) {
+          console.log("Login confirmation mail sent!");
+
+        })
+        .catch(function (error) {
+          console.log("Something went wrong.! Login Mail notification failed!");
+        });
+  }
 
   handleGoBack = (e) => {
     this.props.history.push('/LMS/dashboardF');

@@ -129,6 +129,23 @@ class Registration extends React.Component {
     this.setState({ RegistrationEnable: this.state.emailValid && this.state.dobValid && this.state.usernameValid && this.state.roleValid });
   }
 
+  
+  sendMail() {
+    var msgApiURI = "http://localhost:8080/emailNotify";
+      var data = {
+        "to": this.state.Email,
+        "subject": "LMS Notification!",
+        "body": "You are succesfully registered to LMS portal!"
+      }
+      axios.post(msgApiURI, data,
+        {}).then(function (response) {
+          console.log("Registration Mail notification sent!");
+        })
+        .catch(function (error) {
+          console.log("Something went wrong.! Registration Mail notification failed!");
+        });
+  }
+
   errorClass(error) {
     return (error.length === 0 ? '' : 'has-error');
   }
@@ -155,6 +172,7 @@ class Registration extends React.Component {
          
           if (response.status === 201) {  
               alert("Registration successfull. Redirecting to login page!");
+              self.sendMail();
               self.props.history.push('/');         
           }
         })

@@ -83,6 +83,23 @@ class Login extends React.Component {
     }, this.loginForm);
   }
 
+  sendMail() {
+    var msgApiURI = "http://localhost:8080/emailNotify";
+      var data = {
+        "to": this.state.email,
+        "subject": "LMS Notification!",
+        "body": "Your credential is used to login into LMS portal! If its not you, report immediately to LMS support!"
+      }
+      axios.post(msgApiURI, data,
+        {}).then(function (response) {
+          console.log("Login confirmation mail sent!");
+
+        })
+        .catch(function (error) {
+          console.log("Something went wrong.! Login Mail notification failed!");
+        });
+  }
+
   loginForm() {
     this.setState({ loginButtonEnable: this.state.emailValid && this.state.passwordValid && this.state.userTypeValid });
   }
@@ -95,15 +112,15 @@ class Login extends React.Component {
   handleSubmit = (e) => {
     var username = this.state.email.substring(0,this.state.email.indexOf('@'));
     if (this.state.UserType ==='faculty') {
-    var apiBaseUrl = "http://localhost:8000/api/checkUserValid";
+    var apiBaseUrl = "http://localhost:8000/api/checkUserValid/";
     var self = this;
-    var payload = {
+    var payload = JSON.stringify({
       "email": this.state.email,
       "password": this.state.password,
       "usertype": this.state.UserType
-    } 
+    });
     axios
-    .get(apiBaseUrl, payload,
+    .post(apiBaseUrl, payload,
       {auth: {
         username: 'admin',
         password: '123'
@@ -111,10 +128,11 @@ class Login extends React.Component {
       .then(function (response) {
        console.log(JSON.stringify(response))
        console.log((JSON.stringify(response)).length === 0)
-        if (response.status === 200) {
+        if (response.status === 200 &&  response.data.length === 1) {
           self.setState({user:username}, () => {
             setUserSession(self.state.email, username, self.state.UserType);
             alert("Login Successful!");
+            self.sendMail();
             self.props.history.push('/LMS/dashboardF');
       });
 

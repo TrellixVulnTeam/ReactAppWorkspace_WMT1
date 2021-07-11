@@ -16,8 +16,8 @@ class Facultydashboard extends React.Component {
           Course_Name: "Web Development",
           End_Date: "2021-04-30",
           Add_Module:"+",
-          Students_Enrolled:"View Details",
-          Students_Registered:"View Details",
+          Students_Enrolled:"View Enroll",
+          Students_Registered:"View Register",
           Add_Evaluation:"+",
 
         },
@@ -26,8 +26,8 @@ class Facultydashboard extends React.Component {
           Course_Name: "Python",
           End_Date: "2021-06-30",
           Add_Module:"+",
-          Students_Enrolled:"View Details",
-          Students_Registered:"View Details",
+          Students_Enrolled:"View Enroll",
+          Students_Registered:"View Register",
           Add_Evaluation:"+"
         },
         {
@@ -35,8 +35,8 @@ class Facultydashboard extends React.Component {
           Course_Name: "React JS",
           End_Date: "2021-02-30",
           Add_Module:"+",
-          Students_Enrolled:"View Details",
-          Students_Registered:"View Details",
+          Students_Enrolled:"View Enroll",
+          Students_Registered:"View Register",
           Add_Evaluation:"+"
         }
       ]
@@ -52,12 +52,10 @@ class Facultydashboard extends React.Component {
   }
 
   fetchCourseAssignedDetails (email) {
-    var apiBaseUrl = "http://localhost:8080/facultyDetails";
+    var apiBaseUrl = "http://localhost:8000/coursesEnrolled";
     var self = this;
     var payload = {
-      "id": this.state.email,
-      "password": this.state.password,
-      "role": this.state.UserType
+      "userID": this.state.email,
     }
     axios.get(apiBaseUrl, payload)
       .then(function (response) {
@@ -76,7 +74,7 @@ class Facultydashboard extends React.Component {
     user = getUser();
      
     let bodycontent;
-    if(user.name!=="karthikeyan"){
+    if(user.name!=="karthikeyansuku"){
       bodycontent = <label>No Course</label>
     } else {
       bodycontent = <FacultyTable data={this.state.tableData} />

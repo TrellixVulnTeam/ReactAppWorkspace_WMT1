@@ -2,6 +2,8 @@ import React from 'react';
 import { getUser, removeUserSession } from './Common';
 import { withRouter } from "react-router-dom";
 import './dashboard.css';
+import axios from 'axios';
+
 
 class AddEvaluation extends React.Component {
   constructor(props) {
@@ -13,7 +15,8 @@ class AddEvaluation extends React.Component {
       mark:'',
       totalQuestions:'',
       date:'',
-      time:''
+      time:'',
+      email:''
 
     }
     this.handleLogout = this.handleLogout.bind(this);
@@ -26,8 +29,28 @@ class AddEvaluation extends React.Component {
     this.setState({ [name]: value });
   }
 
+  sendMail(details) {
+    var msgApiURI = "http://localhost:8080/emailNotify";
+      var data = {
+        "to": sessionStorage.getItem('email'),
+        "subject": "LMS Notification!",
+        "body": "Evalution added for the enrolled course! "+details
+      }
+      axios.post(msgApiURI, data,
+        {}).then(function (response) {
+          console.log("Login confirmation mail sent!");
+
+        })
+        .catch(function (error) {
+          console.log("Something went wrong.! Login Mail notification failed!");
+        });
+  }
+
   handleSubmit = (e) => {
-      alert("Evaluation created successfully!");
+    var details="Evaluation:"+this.state.evaluation+" Marks:"+this.state.mark+" Date/Time: "+this.state.date+"/"+this.state.time;
+    console.log(details);
+    this.sendMail(details);
+    alert("Evaluation created successfully!");
   }
  
 
@@ -48,7 +71,7 @@ class AddEvaluation extends React.Component {
     if(user.name.length===0){
       alert("Session Lost. Redirecting to login page!");
       this.handleLogout();
-    } 
+    }
     
     return (
       <div className="dashboard-container">
