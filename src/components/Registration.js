@@ -130,19 +130,21 @@ class Registration extends React.Component {
   }
 
   
-  sendMail() {
+  sendMail(self, to, details) {
     var msgApiURI = "http://localhost:8080/emailNotify";
       var data = {
-        "to": this.state.Email,
+        "to": to,
         "subject": "LMS Notification!",
-        "body": "You are succesfully registered to LMS portal!"
+        "body": details
       }
       axios.post(msgApiURI, data,
         {}).then(function (response) {
           console.log("Registration Mail notification sent!");
+          self.persistEmailNotificationDetails(details, to, 'Success');
         })
         .catch(function (error) {
           console.log("Something went wrong.! Registration Mail notification failed!");
+          self.persistEmailNotificationDetails(details, to, 'Failed');
         });
   }
 
@@ -172,7 +174,7 @@ class Registration extends React.Component {
          
           if (response.status === 201) {  
               alert("Registration successfull. Redirecting to login page!");
-              self.sendMail();
+              self.sendMail(self, self.state.Email, "You are succesfully registered to LMS portal!");
               self.props.history.push('/');         
           }
         })
@@ -186,6 +188,26 @@ class Registration extends React.Component {
       e.preventDefault();
     }
 
+  }
+
+  persistEmailNotificationDetails(details, notifiedList, notificationStatus){
+    var msgApiURI = "http://localhost:8000/api/emailNotification/";
+      var data = {
+        "notifiedList": notifiedList,
+        "changes": details,
+        "changedBy": sessionStorage.getItem('email'),
+        "status": notificationStatus
+      }
+      axios.post(msgApiURI, data,
+        {auth: {
+          username: 'admin',
+          password: '123'
+        }}).then(function (response) {
+          console.log("Notification details persisted successfully!");
+        })
+        .catch(function (error) {
+          console.log("Something went wrong.! Notification details persistent failed!");
+        });
   }
 
   render() {

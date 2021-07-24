@@ -11,29 +11,19 @@ class StudentDetails extends React.Component {
     this.state = {
       tableData: [
         {
-          Student_ID:'202001',
-          Student_Name:'Karthik',
-          Student_EmailID:'Karhtik@gmail.com',
-          Student_PhoneNo:'9762567373'
-
+          Student_ID:'2020CFSE001',
+          Student_Name:'Vishnu',
+          Student_EmailID:'2020CFSE001@wilp.bits-pilani.ac.in'
         },
         {
-          Student_ID:'202002',
-          Student_Name:'Shankar',
-          Student_EmailID:'Shankar@gmail.com',
-          Student_PhoneNo:'8939737733'
+          Student_ID:'2020CFSE002',
+          Student_Name:'Karthikeyan S',
+          Student_EmailID:'2020CFSE002@wilp.bits-pilani.ac.in'
         },
         {
-          Student_ID:'202003',
-          Student_Name:'Bharat',
-          Student_EmailID:'Bharat@gmail.com',
-          Student_PhoneNo:'9891872773'
-        },
-        {
-          Student_ID:'202004',
-          Student_Name:'Raj',
-          Student_EmailID:'Raj@gmail.com',
-          Student_PhoneNo:'9787873287'
+          Student_ID:'2020CFSE008',
+          Student_Name:'Karthikeyan Shankar',
+          Student_EmailID:'2020CFSE008@wilp.bits-pilani.ac.in'
         }
       ],
     }

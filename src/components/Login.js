@@ -83,20 +83,48 @@ class Login extends React.Component {
     }, this.loginForm);
   }
 
-  sendMail() {
+  sendMail(self, to, details) {
     var msgApiURI = "http://localhost:8080/emailNotify";
       var data = {
-        "to": this.state.email,
+        "to": to,
         "subject": "LMS Notification!",
-        "body": "Your credential is used to login into LMS portal! If its not you, report immediately to LMS support!"
+        "body": details
       }
       axios.post(msgApiURI, data,
         {}).then(function (response) {
           console.log("Login confirmation mail sent!");
+          self.persistEmailNotificationDetails(details, to, 'Success');
 
         })
         .catch(function (error) {
           console.log("Something went wrong.! Login Mail notification failed!");
+          self.persistEmailNotificationDetails(details, to, 'Failed');
+
+        });
+  }
+
+  persistEmailNotificationDetails(details, notifiedList, notificationStatus){
+    var msgApiURI = "http://localhost:8000/api/emailNotification/";
+      var data = {
+        "notifiedList": notifiedList,
+        "changes": details,
+        "changedBy": sessionStorage.getItem('email'),
+        "status": notificationStatus
+      };
+      axios.post(msgApiURI, data,
+        {auth: {
+          username: 'admin',
+          password: '123'
+        }}).then(function (response) {
+          if (response.status === 201) {
+          console.log("Notification details persisted successfully!");
+          } else {
+            console.log(response);
+
+          }
+        })
+        .catch(function (error) {
+          console.log("Something went wrong.! Notification details persistent failed!");
         });
   }
 
@@ -132,7 +160,7 @@ class Login extends React.Component {
           self.setState({user:username}, () => {
             setUserSession(self.state.email, username, self.state.UserType);
             alert("Login Successful!");
-            self.sendMail();
+            self.sendMail(self, self.state.email, "Your credential is used to login into LMS portal! If its not you, report immediately to LMS support!");
             self.props.history.push('/LMS/dashboardF');
       });
 

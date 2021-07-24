@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUser, removeUserSession } from './Common';
+import { getUser, removeUserSession, setStudentsEnrolled } from './Common';
 import { withRouter } from "react-router-dom";
 import FacultyTable from "./Table";
 import './dashboard.css';
@@ -39,6 +39,24 @@ class Facultydashboard extends React.Component {
           Students_Registered:"View Register",
           Add_Evaluation:"+"
         }
+      ],
+      studentEnrolled: [
+        {
+          Student_ID:'2020CFSE001',
+          Student_Name:'Vishnu',
+          Student_EmailID:'2020CFSE001@wilp.bits-pilani.ac.in',
+          
+        },
+        {
+          Student_ID:'2020CFSE002',
+          Student_Name:'Karthikeyan S',
+          Student_EmailID:'2020CFSE002@wilp.bits-pilani.ac.in',
+        },
+        {
+          Student_ID:'2020CFSE008',
+          Student_Name:'Karthikeyan Shankar',
+          Student_EmailID:'2020CFSE008@wilp.bits-pilani.ac.in',
+        }
       ]
     }
     this.handleLogout = this.handleLogout.bind(this);
@@ -49,6 +67,11 @@ class Facultydashboard extends React.Component {
     removeUserSession();
     this.props.history.push('/');
     e.preventDefault();
+  }
+
+  onRowSelection = (e) => {
+    console.log(e);
+
   }
 
   fetchCourseAssignedDetails (email) {
@@ -77,7 +100,8 @@ class Facultydashboard extends React.Component {
     if(user.name!=="karthikeyansuku"){
       bodycontent = <label>No Course</label>
     } else {
-      bodycontent = <FacultyTable data={this.state.tableData} />
+      bodycontent = <FacultyTable data={this.state.tableData} onClick={this.onRowSelection}/>
+      setStudentsEnrolled(this.state.studentEnrolled);
     }
     return (
       <div className="dashboard-container">

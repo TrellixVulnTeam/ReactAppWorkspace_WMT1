@@ -44,4 +44,14 @@ export const getUser = () => {
     endpointAuth.password = "karthi24";
     return endpointAuth;
    }
+   export const setStudentsEnrolled = (studentEnrrolledData) => {
+    sessionStorage.setItem('studentsEnrolled', studentEnrrolledData);
+  }
+  export const getStudentsEnrolled = () => {
+    const enrollList= [];
+    enrollList =  sessionStorage.getItem('studentsEnrolled');
+    return enrollList;
+  }
+
+  
    

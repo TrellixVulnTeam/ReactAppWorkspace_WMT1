@@ -74,7 +74,7 @@ function RenderRow(props) {
 
   return props.keys.map((key, index) => {
     if (key === "Add_Module") {
-      return <td key={props.data[key]}><a href={createModuleURL}>{props.data[key]}</a></td>;
+      return <td key={props.data[key]}><a href={createModuleURL} >{props.data[key]}</a></td>;
 
     } else if (key === "Students_Enrolled") {
       return <td key={props.data[key]}><a href={studentEnrolledURL}>{props.data[key]}</a></td>;
