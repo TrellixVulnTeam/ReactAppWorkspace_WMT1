@@ -49,7 +49,6 @@ export const getUser = () => {
   }
   export const getStudentsEnrolled = () => {
     const enrollList= [];
-    enrollList =  sessionStorage.getItem('studentsEnrolled');
     return enrollList;
   }
 
